@@ -1,57 +1,58 @@
 <template>
-  <div class="flex flex-col min-h-screen">
-    <!-- Sección cuando `acess` es true -->
-    <div v-if="acess" class="flex flex-row min-h-screen p-5">
-      <!-- Sección de búsqueda -->
-      <div class="flex flex-col items-center justify-center bg-white shadow-sm border border-slate-200 rounded-lg max-w-[380px] h-[350px]">
-        <div class="overflow-hidden rounded-md h-3/4 flex justify-center items-center">
-          <img class="w-full h-full object-cover" src="/src/assets/musica-pilar.jfif" alt="home-picture" />
+  <div class="min-h-screen bg-gray-100 flex items-center justify-center p-6">
+
+    <div class="w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      <!-- Panel izquierdo -->
+      <div class="bg-white rounded-2xl shadow-lg p-6 flex flex-col items-center">
+
+        <!-- Imagen más pequeña y moderna -->
+        <div class="w-40 h-40 rounded-xl overflow-hidden shadow-md mb-6">
+          <img src="/src/assets/logo-spotyPili.png" class="w-full h-full object-cover" />
         </div>
-        <div class="flex-grow p-6 text-center"></div>
-        <div class="flex flex-col items-center justify-center p-6 pt-2 gap-7">
-          <input type="text" id="searchQuery" placeholder="Escribe una cancion" />
-          <button @click="searchSong" id="searchButton"
-            class="min-w-32 rounded-md bg-black py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-green-500 focus:shadow-none active:bg-green-700 hover:bg-green-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-            type="button">
-            Acceder
+
+        <!-- Input + botón -->
+        <div class="w-full flex flex-col gap-4">
+          <input v-model="titulo" type="text" placeholder="Escribe una canción"
+            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 focus:outline-none text-center text-lg" />
+
+          <button @click="searchSong"
+            class="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-lg text-lg font-semibold shadow-md transition">
+            Buscar
           </button>
         </div>
+
       </div>
 
-      <!-- Sección de información de `datesSong` -->
-      <div class="flex flex-col flex-grow ml-5 bg-white shadow-sm border-slate-200 rounded-lg max-w-[650px] h-[340px]">
-        <ul class="space-y-4 p-4">
-          <li v-for="(song, index) in datesSong" :key="index"
-            class="flex items-center p-4 bg-gray-100 rounded-lg shadow-lg hover:bg-gray-200 transition-colors">
-            <input @click="translateSong" type="text" :value="`${song.name} - ${song.artists[0].name}`"
-              placeholder="traducir"
-              class="ml-4 px-2 py-1 border rounded-md border-gray-300 focus:outline-none focus:border-blue-500 transition-colors w-[350px]"
-              readonly />
+      <!-- Panel derecho: resultados -->
+      <div v-if="datesSong.length" class="bg-white rounded-2xl shadow-lg p-6">
+
+        <h2 class="text-2xl font-bold mb-4 text-gray-800">Resultados</h2>
+
+        <ul class="space-y-4">
+          <li v-for="(song, index) in datesSong" :key="index" @click="translateSong(song)"
+            class="p-4 bg-gray-50 rounded-xl shadow hover:bg-gray-100 transition cursor-pointer">
+
+            <div class="text-lg font-semibold text-gray-800">
+              {{ song.name }}
+            </div>
+
+            <div class="text-gray-600">
+              {{ song.artists[0].name }}
+            </div>
+
           </li>
         </ul>
+
       </div>
+
     </div>
 
-    <!-- Pantalla inicial cuando `acess` es falso -->
-    <div v-else class="flex flex-col items-center justify-center flex-grow bg-gray-100">
-      <div class="flex flex-col bg-white shadow-sm border border-slate-200 rounded-lg max-w-[300px] h-[320px]">
-        <div class="overflow-hidden rounded-md h-3/4 flex justify-center items-center">
-          <img class="w-full h-full object-cover" src="/src/assets/musica-pilar.jfif" alt="home-picture" />
-        </div>
-        <div class="flex-grow p-6 text-center"></div>
-        <div class="flex flex-col items-center justify-center p-6 pt-2 gap-7">
-          <input type="text" id="searchQuery" placeholder="Escribe una cancion" />
-          <button @click="searchSong" id="searchButton"
-            class="min-w-32 rounded-md bg-black py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-green-500 focus:shadow-none active:bg-green-700 hover:bg-green-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-            type="button">
-            Acceder
-          </button>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
-  
+
+
+
 <script src="./wc-home"></script>
 <style scoped>
 input {

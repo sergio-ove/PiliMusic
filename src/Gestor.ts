@@ -100,12 +100,13 @@ export class Gestor {
             this.component.getSong = true;
             router.push({
                 name: 'Login',
-                query: {
-                    message1: artist,
-                    message2: title,
-                    message3: letras
+                state: {
+                    artist,
+                    title,
+                    letras
                 }
             });
+
         } catch (error) {
             console.error('Error fetching lyrics:', error);
         }
