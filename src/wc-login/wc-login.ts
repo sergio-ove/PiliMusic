@@ -11,7 +11,7 @@ export default defineComponent({
 
 
     mounted() {
-        const { artist, title, letras } = history.state;
+        const { letras } = history.state;
         this.letra = letras;
 
     },

@@ -2,8 +2,7 @@ import router from "./router";
 
 export class Gestor {
 
-    private component: any;
-    private cancionTraducida: any;
+    public component: any;
 
     constructor(component: any) {
         this.component = component;
@@ -11,7 +10,7 @@ export class Gestor {
     }
 
 
-    private async searchSong(titulo) {
+    public async searchSong(titulo: string): Promise<void> {
         this.accesoUsuario();
         const responseAcessUser = await this.accesoUsuario();
 
@@ -25,7 +24,7 @@ export class Gestor {
     }
 
 
-    private async accesoUsuario() {
+    public async accesoUsuario(): Promise<any> {
 
         const clientId = 'ff63a88229bf4867af4011c91670e1e7';
         const clientSecret = '5e25940d79624a75a17c60b6fd99db4d';
@@ -64,7 +63,7 @@ export class Gestor {
     };
 
 
-    private async searchTracks(token: any, titulo: any) {
+    public async searchTracks(token: any, titulo: any) {
         console.log(token, titulo);
 
         const response = await fetch(`https://api.spotify.com/v1/search?type=track&q=${encodeURIComponent(titulo)}`, {
@@ -85,7 +84,7 @@ export class Gestor {
 
 
 
-    private async getSong(title, artist) {
+    public async getSong(title: string, artist: string) {
         const encodedArtist = encodeURIComponent(artist);
         const encodedTitle = encodeURIComponent(title);
 

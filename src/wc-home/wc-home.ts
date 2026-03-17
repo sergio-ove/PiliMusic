@@ -1,7 +1,6 @@
 import { defineComponent } from 'vue';
 import { Gestor } from '../Gestor';
-import router from '../router';
-// Importando una exportación nombrada
+
 
 
 
@@ -20,13 +19,15 @@ export default defineComponent({
     },
     methods: {
 
-        searchSong() {
+        searchSong(){
+            if (!this.gestor) return;
             const titulo = this.titulo;
             const tituloSinEspacios = titulo.trim();
             this.gestor.searchSong(tituloSinEspacios);
         },
 
         translateSong(cancion) {
+            if (!this.gestor) return;
             const tituloCancion = cancion.name;
             const autorCancion = cancion.artists[0].name;
             this.acess = false;
