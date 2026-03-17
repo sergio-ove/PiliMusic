@@ -11,7 +11,8 @@ export default defineComponent({
             acess: false,
             datesSong: [],
             getSong: false,
-            titulo: ''
+            titulo: '',
+             gestor: null 
         };
     },
     mounted() {

@@ -55,7 +55,7 @@
 
 
 
-<script src="./wc-home"></script>
+<script lang="ts" src="./wc-home.ts"></script>
 <style scoped>
 input {
   text-align: center;
