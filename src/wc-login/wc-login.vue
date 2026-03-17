@@ -32,5 +32,5 @@
 /* Estilos adicionales si es necesario */
 </style>
 
-<script src="./wc-login.ts"></script>
+<script lang="ts" src="./wc-login.ts"></script>
 <style></style>

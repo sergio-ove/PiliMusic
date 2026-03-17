@@ -9,10 +9,10 @@ export default defineComponent({
     data() {
         return {
             acess: false,
-            datesSong: [],
+            datesSong: [] as any[],
             getSong: false,
             titulo: '',
-             gestor: null as unknown as Gestor,
+            gestor: null as unknown as Gestor,
         };
     },
     mounted() {
@@ -20,14 +20,14 @@ export default defineComponent({
     },
     methods: {
 
-        searchSong(){
+        searchSong() {
             if (!this.gestor) return;
             const titulo = this.titulo;
             const tituloSinEspacios = titulo.trim();
             this.gestor.searchSong(tituloSinEspacios);
         },
 
-        translateSong(cancion) {
+        translateSong(cancion: any) {
             if (!this.gestor) return;
             const tituloCancion = cancion.name;
             const autorCancion = cancion.artists[0].name;
