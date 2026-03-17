@@ -29,7 +29,7 @@
         <h2 class="text-2xl font-bold mb-4 text-gray-800">Resultados</h2>
 
         <!-- Lista de canciones -->
-        <ul v-if="!letraOriginal" class="space-y-4">
+        <ul class="space-y-4">
           <li v-for="(song, index) in datesSong" :key="index" @click="translateSong(song)"
             class="p-4 bg-gray-50 rounded-xl shadow hover:bg-gray-100 transition cursor-pointer">
 

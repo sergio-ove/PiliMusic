@@ -11,8 +11,13 @@ export default defineComponent({
 
 
     mounted() {
-        const { letras } = history.state;
-        this.letra = letras;
+        const state = history.state as { letras?: string };
+
+        if (state && state.letras) {
+            this.letra = state.letras;
+        } else {
+            this.letra = 'No se recibió ninguna letra.';
+        }
 
     },
     methods: {

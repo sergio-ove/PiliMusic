@@ -12,7 +12,7 @@ export default defineComponent({
             datesSong: [],
             getSong: false,
             titulo: '',
-             gestor: null 
+             gestor: null as unknown as Gestor,
         };
     },
     mounted() {
