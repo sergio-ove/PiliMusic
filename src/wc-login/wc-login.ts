@@ -16,7 +16,9 @@ export default defineComponent({
 
     },
     methods: {
-
+        copiarLetra() {
+            navigator.clipboard.writeText(this.letra);
+        },
 
 
     }

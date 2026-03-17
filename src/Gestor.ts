@@ -3,6 +3,7 @@ import router from "./router";
 export class Gestor {
 
     private component: any;
+    private cancionTraducida: any;
 
     constructor(component: any) {
         this.component = component;
@@ -11,7 +12,6 @@ export class Gestor {
 
 
     private async searchSong(titulo) {
-        console.log(titulo, 'titulo');
         this.accesoUsuario();
         const responseAcessUser = await this.accesoUsuario();
 
@@ -79,7 +79,7 @@ export class Gestor {
 
         const data = await response.json();
         console.log(data.tracks.items, 'la data de spoty');
-        const fiveSongs = data.tracks.items.slice(0, 4);
+        const fiveSongs = data.tracks.items.slice(0, 6);
         return fiveSongs;
     };
 
@@ -95,8 +95,7 @@ export class Gestor {
                 throw new Error('Network response was not ok');
             }
             const data = await response.json();
-            console.log(data.lyrics, 'las letras');
-            const letras = data.lyrics
+            const letras = data.lyrics;
             this.component.getSong = true;
             router.push({
                 name: 'Login',
@@ -112,14 +111,6 @@ export class Gestor {
         }
 
     }
-
-
-
-
-
-
-
-
 
 
 }

@@ -10,7 +10,20 @@
                     {{ letra }}
                 </p>
             </div>
+
+            <div class="flex gap-4 mb-4 m-4">
+
+                <button @click="copiarLetra">
+                    
+                    <a href="https://translate.google.es/?sl=auto&tl=es&op=translate" target="_blank"
+                        class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg shadow">
+                        Traducir en Google Translate
+                    </a>
+                </button>
+
+            </div>
         </div>
+
     </div>
 </template>
 
